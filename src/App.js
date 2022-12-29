@@ -4,11 +4,11 @@ import Footer from './Footer';
 import Home from './Home';
 import NewPost from './NewPost';
 import PostPage from './PostPage';
-import About from './About';
 import Missing from './Missing';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
+import Contacts from "./Contacts";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -33,6 +33,12 @@ function App() {
     {
       id: 4,
       title: "My Fourth Post",
+      datetime: "July 01, 2021 11:17:36 AM",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
+    },
+    {
+      id: 5,
+      title: "My Fifth Post",
       datetime: "July 01, 2021 11:17:36 AM",
       body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
     }
@@ -71,7 +77,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title="React JS Blog" />
+      {/*<Header title="React JS Blog" />*/}
       <Nav search={search} setSearch={setSearch} />
       <Switch>
         <Route exact path="/">
@@ -89,10 +95,10 @@ function App() {
         <Route path="/post/:id">
           <PostPage posts={posts} handleDelete={handleDelete} />
         </Route>
-        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contacts} />
         <Route path="*" component={Missing} />
       </Switch>
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 }

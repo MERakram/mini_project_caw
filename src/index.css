@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-.Home, .NewPost, .PostPage, .About, .Missing {
+.Home, .NewPost, .PostPage, .Contact, .Missing {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;
