@@ -10,6 +10,7 @@ import {useState, useEffect} from 'react';
 import {format} from 'date-fns';
 import Contacts from "./views/Contacts";
 import Home from "./views/Home";
+import NewContact from "./views/NewContact";
 
 function App() {
     const [posts, setPosts] = useState([
@@ -80,7 +81,9 @@ function App() {
     const [postsSearchResults, setPostsSearchResults] = useState([]);
     const [contactSearchResults, setContactsSearchResults] = useState([]);
     const [postTitle, setPostTitle] = useState('');
+    const [contactTitle, setContactTitle] = useState('');
     const [postBody, setPostBody] = useState('');
+    const [contactBody, setContactBody] = useState('');
     const history = useHistory();
 
     useEffect(() => {
@@ -98,31 +101,28 @@ function App() {
         setContactsSearchResults(filteredResults.reverse());
     }, [contacts, search])
 
-    const handleSubmit = (e, type) => {
+    const handleAddPost = (e) => {
         e.preventDefault();
-        if (type === 'post') {
-            e.preventDefault();
-            const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-            const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-            const newPost = {id, title: postTitle, datetime, body: postBody};
-            const allPosts = [...posts, newPost];
-            setPosts(allPosts);
-            setPostTitle('');
-            setPostBody('');
-            history.push('/posts');
-        } else if (type === 'contact') {
-            e.preventDefault();
-            const id = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
-            const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-            const newContact = {id, title: postTitle, datetime, body: postBody};
-            const allContacts = [...contacts, newContact];
-            setContacts(allContacts);
-            // setPostTitle('');
-            // setPostBody('');
-            history.push('/contacts');
-        }
+        const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+        const newPost = {id, title: postTitle, datetime, body: postBody};
+        const allPosts = [...posts, newPost];
+        setPosts(allPosts);
+        setPostTitle('');
+        setPostBody('');
+        history.push('/posts');
     }
-
+    const handleAddContact = (e) => {
+        e.preventDefault();
+        const id = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
+        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+        const newContact = {id, title: contactTitle, datetime, body: contactBody};
+        const allContacts = [...contacts, newContact];
+        setContacts(allContacts);
+        setContactTitle('');
+        setContactBody('');
+        history.push('/contacts');
+    }
     const handleDelete = (id) => {
         const postsList = posts.filter(post => post.id !== id);
         setPosts(postsList);
@@ -142,7 +142,7 @@ function App() {
                 </Route>
                 <Route exact path="/addPost">
                     <NewPost
-                        handleSubmit={handleSubmit}
+                        handleSubmit={handleAddPost}
                         postTitle={postTitle}
                         setPostTitle={setPostTitle}
                         postBody={postBody}
@@ -150,12 +150,12 @@ function App() {
                     />
                 </Route>
                 <Route exact path="/addContact">
-                    <NewPost
-                        handleSubmit={handleSubmit}
-                        postTitle={postTitle}
-                        setPostTitle={setPostTitle}
-                        postBody={postBody}
-                        setPostBody={setPostBody}
+                    <NewContact
+                        handleSubmit={handleAddContact}
+                        postTitle={contactTitle}
+                        setPostTitle={setContactTitle}
+                        postBody={contactBody}
+                        setPostBody={setContactBody}
                     />
                 </Route>
                 <Route path="/post/:id">
