@@ -1,14 +1,15 @@
-import Header from './Header';
-import Nav from './Nav';
-import Footer from './Footer';
-import Home from './Home';
-import NewPost from './NewPost';
-import PostPage from './PostPage';
-import Missing from './Missing';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Posts from './views/Posts';
+import NewPost from './views/NewPost';
+import PostPage from './views/PostPage';
+import Missing from './views/Missing';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import Contacts from "./Contacts";
+import Contacts from "./views/Contacts";
+import Home from "./views/Home";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -81,7 +82,10 @@ function App() {
       <Nav search={search} setSearch={setSearch} />
       <Switch>
         <Route exact path="/">
-          <Home posts={searchResults} />
+          <Home/>
+        </Route>
+        <Route exact path="/posts">
+          <Posts posts={searchResults} />
         </Route>
         <Route exact path="/post">
           <NewPost

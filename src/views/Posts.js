@@ -1,8 +1,8 @@
-import Feed from './Feed';
+import Feed from '../components/Feed';
 
-const Home = ({ posts }) => {
+const Posts = ({ posts }) => {
     return (
-        <main className="Home">
+        <main className="Posts">
             {posts.length ? (
                 <Feed posts={posts} />
             ) : (
@@ -14,4 +14,4 @@ const Home = ({ posts }) => {
     )
 }
 
-export default Home
+export default Posts

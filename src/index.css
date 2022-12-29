@@ -28,7 +28,7 @@ body {
 
 .App {
   width: 100%;
-  max-width: 800px;
+  max-width: 80%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-.Home, .NewPost, .PostPage, .Contact, .Missing {
+.Posts, .NewPost, .PostPage, .Contact, .Missing {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;
@@ -139,12 +139,12 @@ body {
   border-bottom: 1px solid lightgray;
 }
 
-.Home .post a {
+.Posts .post a {
   text-decoration: none;
 }
 
-.Home .post a, 
-.Home .post a:visited {
+.Posts .post a,
+.Posts .post a:visited {
   color: #000;
 }
 
