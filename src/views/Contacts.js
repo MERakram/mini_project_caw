@@ -1,8 +1,15 @@
-const Contacts = () => {
+import PostsFeed from '../components/PostsFeed';
+
+const Contacts = ({ contacts }) => {
     return (
-        <main className='Contact'>
-            <h2>Contacts</h2>
-            <p style={{ marginTop: "1rem" }}>This blog app is a project in the Learn React tutorial series.</p>
+        <main className="Posts">
+            {contacts.length ? (
+                <PostsFeed posts={contacts} />
+            ) : (
+                <p style={{ marginTop: "2rem" }}>
+                    No posts to display.
+                </p>
+            )}
         </main>
     )
 }
