@@ -11,72 +11,12 @@ import {format} from 'date-fns';
 import Contacts from "./views/Contacts";
 import Home from "./views/Home";
 import NewContact from "./views/NewContact";
+import { myposts } from "./data/myposts.js";
+import { mycontacts } from "./data/mycontacts.js";
 
 function App() {
-    const [posts, setPosts] = useState([
-        {
-            id: 1,
-            title: "My First Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 2,
-            title: "My 2nd Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 3,
-            title: "My 3rd Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 4,
-            title: "My Fourth Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 5,
-            title: "My Fifth Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        }
-    ])
-    const [contacts, setContacts] = useState([
-        {
-            id: 1,
-            title: "First Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 2,
-            title: "2nd Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 3,
-            title: "My 3rd Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 4,
-            title: "My Fourth Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        },
-        {
-            id: 5,
-            title: "My Fifth Post",
-            datetime: "July 01, 2021 11:17:36 AM",
-            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur expedita, assumenda similique non optio! Modi nesciunt excepturi corrupti atque blanditiis quo nobis, non optio quae possimus illum exercitationem ipsa!"
-        }
-    ])
+    const [posts, setPosts] = useState(myposts)
+    const [contacts, setContacts] = useState(myposts)
     const [search, setSearch] = useState('');
     const [postsSearchResults, setPostsSearchResults] = useState([]);
     const [contactSearchResults, setContactsSearchResults] = useState([]);
