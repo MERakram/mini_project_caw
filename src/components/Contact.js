@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom';
 
-const Contact = ({ post: contact }) => {
+const Contact = ({ contact }) => {
     return (
         <article className="post">
-            <Link to={`/post/${contact.id}`}>
-                <h2>{contact.title}</h2>
-                <p className="postDate">{contact.datetime}</p>
+            <Link to={`/contact/${contact.id}`}>
+                <h2>{contact.name}</h2>
+                <p className="postDate">{contact.phoneNumber}</p>
+            
             </Link>
-            <p className="postBody">{
-                (contact.body).length <= 25
-                    ? contact.body
-                    : `${(contact.body).slice(0, 25)}...`
-            }</p>
+            {/* <p className="postBody">{
+                (contact.email).length <= 25
+                    ? contact.email
+                    : `${(contact.email).slice(0, 25)}...`
+            }</p> */}
+                <p className="postDate">{contact.email}</p>
         </article>
     )
 }

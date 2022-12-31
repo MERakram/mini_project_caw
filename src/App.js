@@ -9,19 +9,21 @@ import {format} from 'date-fns';
 import Contacts from "./views/Contacts";
 import Home from "./views/Home";
 import NewContact from "./views/NewContact";
+import ContactPage from './views/ContactPage';
 import { myposts } from "./data/myposts.js";
 import { mycontacts } from "./data/mycontacts.js";
 
 function App() {
     const [posts, setPosts] = useState(myposts)
-    const [contacts, setContacts] = useState(myposts)
+    const [contacts, setContacts] = useState(mycontacts)
     const [search, setSearch] = useState('');
     const [postsSearchResults, setPostsSearchResults] = useState([]);
     const [contactSearchResults, setContactsSearchResults] = useState([]);
     const [postTitle, setPostTitle] = useState('');
-    const [contactTitle, setContactTitle] = useState('');
+    const [contactName, setContactName] = useState('');
     const [postBody, setPostBody] = useState('');
-    const [contactBody, setContactBody] = useState('');
+    const [contactPhoneNumber, setContactPhoneNumber] = useState('');
+    const [contactEmail, setContactEmail] = useState('');
     const history = useHistory();
 
     useEffect(() => {
@@ -32,9 +34,10 @@ function App() {
         setPostsSearchResults(filteredResults.reverse());
     }, [posts, search])
     useEffect(() => {
-        const filteredResults = contacts.filter((post) =>
-            ((post.body).toLowerCase()).includes(search.toLowerCase())
-            || ((post.title).toLowerCase()).includes(search.toLowerCase()));
+        const filteredResults = contacts.filter((contact) =>
+            ((contact.name).toLowerCase()).includes(search.toLowerCase())
+            || ((contact.phoneNumber).toLowerCase()).includes(search.toLowerCase())
+            || ((contact.email).toLowerCase()).includes(search.toLowerCase()));
 
         setContactsSearchResults(filteredResults.reverse());
     }, [contacts, search])
@@ -53,12 +56,12 @@ function App() {
     const handleAddContact = (e) => {
         e.preventDefault();
         const id = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
-        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-        const newContact = {id, title: contactTitle, datetime, body: contactBody};
+        const newContact = {id, name: contactName, phoneNumber: contactPhoneNumber, email: contactEmail};
         const allContacts = [...contacts, newContact];
         setContacts(allContacts);
-        setContactTitle('');
-        setContactBody('');
+        setContactName('');
+        setContactPhoneNumber('');
+        setContactEmail('');
         history.push('/contacts');
     }
     const handleDelete = (id) => {
@@ -69,7 +72,6 @@ function App() {
 
     return (
         <div className="App">
-            {/*<Header title="React JS Blog" />*/}
             <Nav search={search} setSearch={setSearch}/>
             <Switch>
                 <Route exact path="/">
@@ -90,10 +92,12 @@ function App() {
                 <Route exact path="/addContact">
                     <NewContact
                         handleSubmit={handleAddContact}
-                        postTitle={contactTitle}
-                        setPostTitle={setContactTitle}
-                        postBody={contactBody}
-                        setPostBody={setContactBody}
+                        contactName={contactName}
+                        setContactName={setContactName}
+                        contactPhoneNumber={contactPhoneNumber}
+                        setContactPhoneNumber={setContactPhoneNumber}
+                        contactEmail={contactEmail}
+                        setContactEmail={setContactEmail}
                     />
                 </Route>
                 <Route path="/post/:id">
@@ -101,6 +105,9 @@ function App() {
                 </Route>
                 <Route path="/contacts">
                     <Contacts contacts={contactSearchResults}/>
+                </Route>
+                <Route path="/contact/:id">
+                    <ContactPage contacts={contacts} handleDelete={handleDelete}/>
                 </Route>
                 <Route path="*" component={Missing}/>
             </Switch>

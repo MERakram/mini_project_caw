@@ -1,13 +1,13 @@
-import PostsFeed from '../components/PostsFeed';
+import ContactFeed from '../components/ContactFeed';
 
 const Contacts = ({ contacts }) => {
     return (
         <main className="Posts">
             {contacts.length ? (
-                <PostsFeed posts={contacts} />
+                <ContactFeed contacts={contacts} />
             ) : (
                 <p style={{ marginTop: "2rem" }}>
-                    No posts to display.
+                    No contacts to display.
                 </p>
             )}
         </main>

@@ -7,7 +7,7 @@ const ContactFeed = ({ Contacts }) => {
         <>
             <Link to="/addContact"><button className='btn'>Add Contact</button></Link>
             {Contacts.map(contact => (
-                <Contact key={contact.id} post={contact} />
+                <Contact key={contact.id} contact={contact} />
             ))}
                 <Link to="/"><button className='btn'><AiOutlineCaretUp  className='icon' /> </button></Link>
         </>
