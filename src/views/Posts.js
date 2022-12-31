@@ -1,13 +1,12 @@
 import PostsFeed from '../components/PostsFeed';
 
-const Posts = ({ posts }) => {
+const Posts = ({posts}) => {
     return (
         <main className="Posts">
             {posts.length ? (
-                <PostsFeed posts={posts} />
-                
+                <PostsFeed posts={posts}/>
             ) : (
-                <p style={{ marginTop: "2rem" }}>
+                <p style={{marginTop: "2rem"}}>
                     No posts to display.
                 </p>
             )}

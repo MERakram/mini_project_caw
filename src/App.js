@@ -10,15 +10,15 @@ import Contacts from "./views/Contacts";
 import Home from "./views/Home";
 import NewContact from "./views/NewContact";
 import ContactPage from './views/ContactPage';
-import { myposts } from "./data/myposts.js";
-import { mycontacts } from "./data/mycontacts.js";
+import {myposts} from "./data/myposts.js";
+import {mycontacts} from "./data/mycontacts.js";
 
 function App() {
     const [posts, setPosts] = useState(myposts)
     const [contacts, setContacts] = useState(mycontacts)
     const [search, setSearch] = useState('');
     const [postsSearchResults, setPostsSearchResults] = useState([]);
-    const [contactSearchResults, setContactsSearchResults] = useState([]);
+    const [contactsSearchResults, setContactsSearchResults] = useState([]);
     const [postTitle, setPostTitle] = useState('');
     const [contactName, setContactName] = useState('');
     const [postBody, setPostBody] = useState('');
@@ -64,12 +64,16 @@ function App() {
         setContactEmail('');
         history.push('/contacts');
     }
-    const handleDelete = (id) => {
+    const deletePost = (id) => {
         const postsList = posts.filter(post => post.id !== id);
         setPosts(postsList);
-        history.push('/');
+        history.push('/posts');
     }
-
+    const deleteContact = (id) => {
+        const contactsList = contacts.filter(post => post.id !== id);
+        setContacts(contactsList);
+        history.push('/contacts');
+    }
     return (
         <div className="App">
             <Nav search={search} setSearch={setSearch}/>
@@ -101,13 +105,13 @@ function App() {
                     />
                 </Route>
                 <Route path="/post/:id">
-                    <PostPage posts={posts} handleDelete={handleDelete}/>
+                    <PostPage posts={posts} handleDelete={deletePost}/>
                 </Route>
                 <Route path="/contacts">
-                    <Contacts contacts={contactSearchResults}/>
+                    <Contacts contacts={contactsSearchResults}/>
                 </Route>
                 <Route path="/contact/:id">
-                    <ContactPage contacts={contacts} handleDelete={handleDelete}/>
+                    <ContactPage contacts={contacts} handleDelete={deleteContact}/>
                 </Route>
                 <Route path="*" component={Missing}/>
             </Switch>

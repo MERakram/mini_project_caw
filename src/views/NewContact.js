@@ -13,7 +13,7 @@ const NewContact = ({
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                 />
-                   <label htmlFor="contactPhoneNumber">Phonenumber:</label>
+                   <label htmlFor="contactPhoneNumber">Phone Number:</label>
                 <input
                     id="contactPhoneNumber"
                     type="text"

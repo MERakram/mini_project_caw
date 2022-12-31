@@ -4,7 +4,7 @@ const Contacts = ({ contacts }) => {
     return (
         <main className="Posts">
             {contacts.length ? (
-                <ContactFeed contacts={contacts} />
+                <ContactFeed Contacts={contacts} />
             ) : (
                 <p style={{ marginTop: "2rem" }}>
                     No contacts to display.
