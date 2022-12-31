@@ -15,10 +15,10 @@ const Nav = ({ search, setSearch }) => {
             </form>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/posts">Posts</Link></li>
-                <li><Link to="/addPost">Add Post</Link></li>
+                <li><Link to="/posts">Blog</Link></li>
+                {/* <li><Link to="/addPost">Add Post</Link></li> */}
                 <li><Link to="/contacts">Contact</Link></li>
-                <li><Link to="/addContact">Add Contact</Link></li>
+                {/* <li><Link to="/addContact">Add Contact</Link></li> */}
             </ul>
         </nav>
     )

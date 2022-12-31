@@ -5,6 +5,7 @@ const Posts = ({ posts }) => {
         <main className="Posts">
             {posts.length ? (
                 <PostsFeed posts={posts} />
+                
             ) : (
                 <p style={{ marginTop: "2rem" }}>
                     No posts to display.

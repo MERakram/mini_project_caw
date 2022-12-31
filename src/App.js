@@ -1,6 +1,4 @@
-import Header from './components/Header';
 import Nav from './components/Nav';
-import Footer from './components/Footer';
 import Posts from './views/Posts';
 import NewPost from './views/NewPost';
 import PostPage from './views/PostPage';
@@ -106,7 +104,6 @@ function App() {
                 </Route>
                 <Route path="*" component={Missing}/>
             </Switch>
-            {/*<Footer />*/}
         </div>
     );
 }

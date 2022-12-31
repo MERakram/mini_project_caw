@@ -1,8 +1,8 @@
 const Home = () => {
     return (
         <main className='Contact'>
-            <h2>This is Home</h2>
-            <p style={{ marginTop: "1rem" }}>This blog app is a project in the Learn React tutorial series.</p>
+            <h2>Home</h2>
+            <p style={{ marginTop: "1rem" }}>We are Akram and Malak, Welcome to our Home Page.</p>
         </main>
     )
 }
