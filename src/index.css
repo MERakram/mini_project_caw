@@ -27,7 +27,7 @@ body {
 }
 
 .App {
-  width: 80%;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,16 +35,6 @@ body {
   align-items: center;
   border: 1px solid #333;
   box-shadow: 0px 0px 15px gray;
-}
-
-
-
-.Header h1 {
-  font-size: 1.5rem;
-}
-
-.Header svg {
-  font-size: 2rem;
 }
 
 
@@ -162,7 +152,7 @@ body {
   margin-top: 1rem;
 }
 
-.newPostForm input[type='text'], 
+.newPostForm input[type='text'] , 
 .newPostForm textarea {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
@@ -174,6 +164,16 @@ body {
   outline: none;
 }
 
+.newPostForm input[type='date']   {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+}
 .newPostForm textarea {
   height: 100px;
 }
@@ -248,13 +248,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 992px) {
 
-  .Header svg {
-    font-size: 3rem;
-  }
-
-}
 .btn {
   height: 48px;
   min-width: 48px;

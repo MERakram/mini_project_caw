@@ -30,7 +30,7 @@ const NewContact = ({
                     onChange={(e) => setContactEmail(e.target.value)}
                 />
                 
-                <button type="submit">Submit</button>
+                <button type="submit">Add Contact</button>
             </form>
         </main>
     )

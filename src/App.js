@@ -5,7 +5,6 @@ import PostPage from './views/PostPage';
 import Missing from './views/Missing';
 import {Route, Switch, useHistory} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import {format} from 'date-fns';
 import Contacts from "./views/Contacts";
 import Home from "./views/Home";
 import NewContact from "./views/NewContact";
@@ -22,6 +21,7 @@ function App() {
     const [postTitle, setPostTitle] = useState('');
     const [contactName, setContactName] = useState('');
     const [postBody, setPostBody] = useState('');
+    const [postDate, setPostDate] = useState('');
     const [contactPhoneNumber, setContactPhoneNumber] = useState('');
     const [contactEmail, setContactEmail] = useState('');
     const history = useHistory();
@@ -29,7 +29,8 @@ function App() {
     useEffect(() => {
         const filteredResults = posts.filter((post) =>
             ((post.body).toLowerCase()).includes(search.toLowerCase())
-            || ((post.title).toLowerCase()).includes(search.toLowerCase()));
+            || ((post.title).toLowerCase()).includes(search.toLowerCase())
+            || ((post.datetime).toLowerCase()).includes(search.toLowerCase()));
 
         setPostsSearchResults(filteredResults.reverse());
     }, [posts, search])
@@ -45,12 +46,12 @@ function App() {
     const handleAddPost = (e) => {
         e.preventDefault();
         const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-        const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-        const newPost = {id, title: postTitle, datetime, body: postBody};
+        const newPost = {id, title: postTitle, datetime : postDate, body: postBody};
         const allPosts = [...posts, newPost];
         setPosts(allPosts);
         setPostTitle('');
         setPostBody('');
+        setPostDate('');
         history.push('/posts');
     }
     const handleAddContact = (e) => {
@@ -70,7 +71,7 @@ function App() {
         history.push('/posts');
     }
     const deleteContact = (id) => {
-        const contactsList = contacts.filter(post => post.id !== id);
+        const contactsList = contacts.filter(contact => contact.id !== id);
         setContacts(contactsList);
         history.push('/contacts');
     }
@@ -91,6 +92,8 @@ function App() {
                         setPostTitle={setPostTitle}
                         postBody={postBody}
                         setPostBody={setPostBody}
+                        postDate={postDate}
+                        setPostDate={setPostDate}
                     />
                 </Route>
                 <Route exact path="/addContact">
