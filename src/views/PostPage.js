@@ -1,7 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
+import Comments from "../components/Comments";
 
-const PostPage = ({ posts, handleDelete }) => {
-    const { id } = useParams();
+const PostPage = ({posts, handleDelete}) => {
+    const {id} = useParams();
     const post = posts.find(post => (post.id).toString() === id);
     return (
         <main className="PostPage">
@@ -26,6 +27,7 @@ const PostPage = ({ posts, handleDelete }) => {
                     </>
                 }
             </article>
+            <Comments/>
         </main>
     )
 }

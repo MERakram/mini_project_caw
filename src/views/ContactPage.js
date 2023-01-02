@@ -1,7 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
+import Comments from "../components/Comments";
 
-const ContactPage = ({ contacts, handleDelete }) => {
-    const { id } = useParams();
+const ContactPage = ({contacts, handleDelete}) => {
+    const {id} = useParams();
     const contact = contacts.find(contact => (contact.id).toString() === id);
     return (
         <main className="PostPage">
