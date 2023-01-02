@@ -102,12 +102,12 @@ body {
     cursor: pointer;
 }
 
-.Posts, .NewPost, .PostPage, .Contact, .Missing {
+.Posts, .NewPost, .PostPage, .Contact, .Missing, .Home {
     width: 100%;
     flex-grow: 1;
     padding: 1rem;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: #e0dddd;
 }
 
 .post {

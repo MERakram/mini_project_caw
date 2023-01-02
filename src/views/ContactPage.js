@@ -1,5 +1,4 @@
 import {useParams, Link} from "react-router-dom";
-import Comments from "../components/Comments";
 
 const ContactPage = ({contacts, handleDelete}) => {
     const {id} = useParams();
